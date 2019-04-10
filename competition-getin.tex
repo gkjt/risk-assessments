@@ -10,6 +10,7 @@
 \usepackage[nomessages]{fp}
 \usepackage{xstring}
 \usepackage{xparse}
+\usepackage{tabu}
 
 \title{Student Robotics Risk Assessment Form}
 
@@ -35,10 +36,30 @@
 }
 
 \newcommand{\harm}[8]{
-% Harm, risk groups, control measures, responsible persons, inherent likelyhood, inhernt severity, residual likelihood, residual severity
-#1 & #2 & #3 & #4 & #5 & #6 & \the\numexpr#5*#6\relax & #7 & #8 & \the\numexpr#7*#8\relax \\
-\hline
+	\newcounter{controlmeasures}
+	% Harm, risk groups, control measures + responsible persons, inherent likelihood, inherent severity, residual likelihood, residual severity
+	#1 & #2 & %
+	\multicolumn{2}{@{}c@{}|}{
+		\begin{tabu} to 26em {@{}X[20]@{}|@{}X[6]@{}} 
+			%asdf & asdf \\
+			#3 
+		\end{tabu}
+	} 
+	& #5 & #6 & \the\numexpr#5*#6\relax %
+	& #7 & #8 & \the\numexpr#7*#8\relax \\
+	%\cline{1-2}
+	%\cline{5-9}
+	\hline
 }
+
+\newcommand{\controlmeasure}[2]{
+	\ifnum\value{controlmeasures}>0 %
+		\hline
+	\fi
+	\stepcounter{controlmeasures}
+#1 & #2 \\
+}
+
 
 \begin{landscape}
 \section{Risks}
@@ -46,7 +67,7 @@ The following risks have been considered for the Student Robotics Competition.
 Further description of the meaning of risk ratings (presented in this section as
 $L \times S$) can be found in the next section.
 
-\begin{longtable}{|p{12em}|p{4em}|p{18em}|p{8em}|*3{p{2em}|} *3{p{2em}|}}
+\begin{longtable}{|p{12em}|p{4em}|@{}p{20em}@{}|@{}p{6em}@{}|*3{p{2em}|} *3{p{2em}|}}
 \hline
 \textbf{Hazard} & \textbf{Risk Groups} & \textbf{Control Measures} & \textbf{Responsible Person} & \multicolumn{3}{c|}{\textbf{Inherent Risk}} & \multicolumn{3}{c|}{\textbf{Residual Risk}} \\
 \cline{5-7}
@@ -60,8 +81,11 @@ $L \times S$) can be found in the next section.
 \endfoot
 \harm{Short and Long Term Back injury}%
 {V, TC}%
-{Be safe}%
-{Individuals, Supervisor}%
+{
+\controlmeasure{Be safe}{Individuals, Supervisor}
+\controlmeasure{Be extra safe}{safety police}
+\controlmeasure{Fuck you LaTeX I got a risk assessment template working}{Me, Myself, I}
+}{}%
 {4}{4}%
 {2}{4}%
 
