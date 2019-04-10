@@ -3,7 +3,14 @@
 \usepackage[final]{pdfpages}
 \usepackage[colorlinks]{hyperref}
 \usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
 \usepackage[margin=0.5in]{geometry}
+
+\usepackage[nomessages]{fp}
+\usepackage{xstring}
+\usepackage{xparse}
+
 \title{Student Robotics Risk Assessment Form}
 
 \begin{document}
@@ -12,7 +19,7 @@
 \begin{description}
 \item[Activity being assessed:] Get In for Student Robotics Competition (XXXX, 2020)
 \item[Location:] Southampton University Students Union (SUSU)
-\item[Persons at risk:] Blueshirts, Technical Crew, SUSU Staff
+\item[Persons at risk:] Volunteers (V), Technical Crew (TC)
 \end{description}
 
 \begin{description}
@@ -22,9 +29,15 @@
 \end{description}
 \clearpage
 
-\newcommand{\risk}[5]{
- & #1 & #2 & #3 & #4 & #5 \\
+\newcommand{\risk}[6]{
+ #1 & #2 & #3 & #4 & #5 & #6 \\
  \hline
+}
+
+\newcommand{\harm}[8]{
+% Harm, risk groups, control measures, responsible persons, inherent likelyhood, inhernt severity, residual likelihood, residual severity
+#1 & #2 & #3 & #4 & #5 & #6 & \the\numexpr#5*#6\relax & #7 & #8 & \the\numexpr#7*#8\relax \\
+\hline
 }
 
 \begin{landscape}
@@ -33,10 +46,32 @@ The following risks have been considered for the Student Robotics Competition.
 Further description of the meaning of risk ratings (presented in this section as
 $L \times S$) can be found in the next section.
 
-%\centering
-\begin{longtable}{|p{8em}|p{12em}|p{4em}|p{15em}|p{8em}|p{4em}|}
+\begin{longtable}{|p{12em}|p{4em}|p{18em}|p{8em}|*3{p{2em}|} *3{p{2em}|}}
 \hline
-\textbf{Hazard} & \textbf{Harm} & \textbf{Risk Groups} & \textbf{Control Measures} & \textbf{Responsible Person} & \textbf{Risk Rating} \\
+\textbf{Hazard} & \textbf{Risk Groups} & \textbf{Control Measures} & \textbf{Responsible Person} & \multicolumn{3}{c|}{\textbf{Inherent Risk}} & \multicolumn{3}{c|}{\textbf{Residual Risk}} \\
+\cline{5-7}
+\cline{8-10}
+ &  & &  & L & S & Risk & L & S & Risk \\
+
+
+\hline
+\endhead
+
+\endfoot
+\harm{Short and Long Term Back injury}%
+{V, TC}%
+{Be safe}%
+{Individuals, Supervisor}%
+{4}{4}%
+{2}{4}%
+
+\end{longtable}
+
+
+%\centering
+\begin{longtable}{|p{12em}|p{4em}|p{18em}|p{8em}|p{4em}|p{4em}|}
+\hline
+\textbf{Hazard} & \textbf{Risk Groups} & \textbf{Control Measures} & \textbf{Responsible Person} & \textbf{Inherent Risk} & \textbf{Residual Risk} \\
 \hline
 \endhead
 
@@ -49,11 +84,62 @@ Carrying Heavy Loads
 	\item All Blueshirts should have received H\&S training which includes manual handling.
 	\item Crew must ensure that they follow proper lifting procedure, reminding others when necessary.
 	\item Ensure that the lift is planned beforehand, including route and destination and communicate this to all involved.
+	\item Ensure that the appropriate number of people are used to carry the load, depending on weight of load and capacity of those involved in the lift.
+	\item Ensure that all crew members are aware of their own capabilities and are not pushed to exceed them.
+	\item Crew encouraged to use gloves and other Personal Protective Equipment (PPE) when they deem necessary.
+	\item When carrying breaks should be taken every 10m or where necessary.
+
 \end{itemize}
 }
-{Health and Safety Lead}
-{16}
+{Individuals, Health and Safety Lead}
+{4 x 4 = 16}
+{2 x 4 = 8}
 
+Moving of flight cases / staging / palettes / bulky equipment
+\risk{Injuries from movement of equipment}
+{B, TC}
+{
+\begin{itemize}
+	\item Ensure that all crew members have received H\&S training, including manual handling.
+	\item Members must ensure that they follow proper lifting procedure, reminding others when necessary.
+	\item Crew are to wear steel-toe-capped boots when necessary, and sturdy footwear for other handling, (e.g. not to wear flip-flops).
+	\item Where possible items should be transported on wheels.
+	\item All crew to be aware of surroundings whilst moving in public areas (e.g. Highfield campus), and a designated leader should clear the way of pedestrians.
+\end{itemize}
+}
+{Individuals, Health and Safety Lead}
+{4 x 3 = 12}
+{2 x 3 = 12}
+
+Items dropped from height
+\risk{Head injuries from items (e.g. spanners) dropped from height}
+{B, TC}
+{
+\begin{itemize}
+\item Ensure that all crew members have received H\&S training, including safe working at height.
+\item Ensure that all crew members are aware of their own capabilities and are not pushed to exceed them.
+\item Avoid intentionally dropping items from height if possible, even if area below seems clear.  If unavoidable, warn those in vicinity.
+\item Secure tools to user/ladder using lanyards, whenever possible.
+\item Ensure others are aware of work going on at height and that the area directly under the ladder is kept clear.
+\item No crew member should carry excessive loads up ladders (e.g. a rope and pulley system should be used to haul up heavy loads).
+\item If any item is dropped then a loud verbal warning must be given (e.g. "Heads!").
+\end{itemize}
+}
+{Individuals, Health and Safety Lead}
+{5 x 4 = 20}
+{2 x 4 = 8}
+
+a
+\risk{a}
+{B, TC}
+{
+\begin{itemize}
+	\item asdf 
+\end{itemize}
+}
+{Individuals, Health and Safety Lead}
+{a}
+{a}
 
 
 \end{longtable}
