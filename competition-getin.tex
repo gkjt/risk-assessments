@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage{url, pdflscape}
+\usepackage[final]{pdfpages}
+\usepackage[colorlinks]{hyperref}
+\usepackage{longtable}
+\usepackage[margin=0.5in]{geometry}
+\title{Student Robotics Risk Assessment Form}
+
+\begin{document}
+\maketitle
+
+\begin{description}
+\item[Activity being assessed:] Get In for Student Robotics Competition (XXXX, 2020)
+\item[Location:] Southampton University Students Union (SUSU)
+\item[Persons at risk:] Blueshirts, Technical Crew, SUSU Staff
+\end{description}
+
+\begin{description}
+\item[Assessor's name:] Thomas Scarsbrook
+\item[Responsible Persons:] Health and Safety Lead; Team Leaders
+\item[Date of assessment:] \date{\today}
+\end{description}
+\clearpage
+
+\newcommand{\risk}[5]{
+ & #1 & #2 & #3 & #4 & #5 \\
+ \hline
+}
+
+\begin{landscape}
+\section{Risks}
+The following risks have been considered for the Student Robotics Competition. 
+Further description of the meaning of risk ratings (presented in this section as
+$L \times S$) can be found in the next section.
+
+%\centering
+\begin{longtable}{|p{8em}|p{12em}|p{4em}|p{15em}|p{8em}|p{4em}|}
+\hline
+\textbf{Hazard} & \textbf{Harm} & \textbf{Risk Groups} & \textbf{Control Measures} & \textbf{Responsible Person} & \textbf{Risk Rating} \\
+\hline
+\endhead
+
+\endfoot
+Carrying Heavy Loads
+\risk{Short and long term back injury from incorrect lifting technique}
+{B, TC}
+{
+\begin{itemize}
+	\item All Blueshirts should have received H\&S training which includes manual handling.
+	\item Crew must ensure that they follow proper lifting procedure, reminding others when necessary.
+	\item Ensure that the lift is planned beforehand, including route and destination and communicate this to all involved.
+\end{itemize}
+}
+{Health and Safety Lead}
+{16}
+
+
+
+\end{longtable}
+\end{landscape}
+
+\input{assessment-guidance}
+
+%\clearpage
+
+%\newpage
+%\includepdf[scale=1.0,landscape]{extras/Fire1.pdf}
+
+\end{document}
+
