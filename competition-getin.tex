@@ -35,16 +35,16 @@
  \hline
 }
 
-\newcommand{\riskcolour}[1]{%
-        \ifdim #1 pt > 8 pt
-			\ifdim #1 pt > 12pt
-			\cellcolor{red}\hfill #1 \hfill
-			\else
-				\cellcolor{yellow}{\hfill #1 \hfill}
-			\fi
-        \else
-			\cellcolor{green}{\hfill #1 \hfill}
-        \fi
+\newcommand{\riskcolour}[1]{
+	\ifdim #1 pt > 8 pt
+		\ifdim #1 pt > 12pt
+			\cellcolor{red}#1
+		\else
+			\cellcolor{yellow}#1
+	   	\fi
+	\else
+		\cellcolor{green}#1
+	\fi
 }
 
 %\newcolumntype{R}{>{\collectcell\ApplyGradient}c<{\endcollectcell}}
