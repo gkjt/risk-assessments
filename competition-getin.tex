@@ -9,7 +9,7 @@
 
 \usepackage{collcell}
 
-\usepackage{tabu}
+\usepackage{colortbl}
 
 
 \title{Student Robotics Risk Assessment Form}
@@ -38,26 +38,29 @@
 \newcommand{\riskcolour}[1]{%
         \ifdim #1 pt > 8 pt
 			\ifdim #1 pt > 12pt
-			\colorbox{red}{\hfill #1 \hfill}
+			\cellcolor{red}\hfill #1 \hfill
 			\else
-				\colorbox{yellow}{\hfill #1 \hfill}
+				\cellcolor{yellow}{\hfill #1 \hfill}
 			\fi
         \else
-			\colorbox{green}{\hfill #1 \hfill}
+			\cellcolor{green}{\hfill #1 \hfill}
         \fi
 }
 
 %\newcolumntype{R}{>{\collectcell\ApplyGradient}c<{\endcollectcell}}
+
+%\setlength{\fboxsep}{3mm} % box size
+%\setlength{\tabcolsep}{0pt}
 
 \newcommand{\harm}[8]{
 	\newcounter{controlmeasures}
 	% Harm, risk groups, control measures + responsible persons, inherent likelihood, inherent severity, residual likelihood, residual severity
 	#1 & #2 & %
 	\multicolumn{2}{@{}c@{}|}{
-		\begin{tabu} to 26em {@{}X[20]@{}|@{}X[6]@{}} 
+		\begin{tabular}{@{}p{20em}@{}|@{}p{6em}@{}} 
 			%asdf & asdf \\
 			#3 
-		\end{tabu}
+		\end{tabular}
 	} 
 	& #5 & #6 & \riskcolour{\the\numexpr#5*#6\relax} %
 	& #7 & #8 & \riskcolour{\the\numexpr#7*#8\relax} \\
